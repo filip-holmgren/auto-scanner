@@ -8,9 +8,5 @@ class PypiPkg(Pkg):
             name=name,
             version=version
         )
-
-        if api.has_package(pkg):
-            return None
-    
-        api.add_package(pkg)
+        
         return pkg

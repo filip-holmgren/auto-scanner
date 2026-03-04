@@ -27,6 +27,9 @@ class PkgAPI(ABC):
         except KeyError:
             return False
     
+    def get_package(self, name: str) -> Pkg:
+        return Pkg(name, self.kv.get(name))
+    
     @abstractmethod
     def search_packages(self, query: str, limit: int = 100) -> list[Pkg]:
         pass

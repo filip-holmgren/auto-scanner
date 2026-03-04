@@ -35,12 +35,14 @@ class PypiAPI(PkgAPI):
                 continue
             
             pkg = PypiPkg.from_data(name, version, self)
-            if pkg is not None:
-                packages.append(pkg)
-                gotten = gotten + 1
+            if self.has_package(pkg) == False:
+                self.add_package(pkg)
                 print(f"Scan found {name} version {version}")
             else:
                 print(f"Already have {name}")
+
+            packages.append(pkg)
+            gotten = gotten + 1
             
             if gotten >= limit:
                 print("Limit reached, exiting")
