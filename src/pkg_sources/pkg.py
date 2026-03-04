@@ -1,13 +1,12 @@
 from abc import ABC, abstractmethod
 
 class Pkg(ABC):
-    def __init__(self):
-        pass
+    def __init__(self, name, version):
+        self.name = name
+        self.version = version
 
-    @abstractmethod
     def get_name(self) -> str:
-        pass
+        return self.name
 
-    @abstractmethod
     def get_version(self) ->str:
-        pass
+        return self.version
