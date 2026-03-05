@@ -43,17 +43,17 @@ class PypiAPI(PkgAPI):
                     if retry_after and int(retry_after) != 0:
                         sleep_time = int(retry_after)
                     else:
-                        sleep_time = 2 ** attempts
+                        sleep_time = 2**attempts
 
                     self._log(f"Rate limited. Sleeping for {sleep_time} seconds")
                     sleep(sleep_time)
                     attempts += 1
                     continue
-                
+
                 # Unknown http error. Exit
                 raise
 
             except Exception as e:
                 self._log(f"Unexpected error: {e}")
-                sleep(2 ** attempts)
+                sleep(2**attempts)
                 attempts += 1
